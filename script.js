@@ -48,14 +48,18 @@ function gameScore(userChoice) {
     // Check if either player has reached a score of 5
     if (userWins === 5 || computerWins === 5) {
         console.log(userWins === 5 ? "You win!" : "Computer wins!");
+        resetScores()
     }
 }
 
 // Randomly choose a hand for computer to play
 function getComputerChoice() {
-    computerChoice = COMPUTER_CHOICES[(Math.floor(Math.random() * COMPUTER_CHOICES.length))]
-    return computerChoice
+    computerChoice = COMPUTER_CHOICES[(Math.floor(Math.random() * COMPUTER_CHOICES.length))];
+    return computerChoice;
 }
 
-
-
+// Resets Scores to 0
+function resetScores() {
+    computerWins = 0;
+    userWins = 0;
+}
