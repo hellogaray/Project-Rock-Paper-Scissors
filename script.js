@@ -25,15 +25,16 @@ function determineWinner(userChoice, computerChoice) {
     if (WINNING_COMBINATIONS[userChoice] === computerChoice) {
         return true; // Return true if user wins
     }
-    
+
     // Computer wins
     return false; // Return false if computer wins
 }
 
 // Update game score based on user's choice
 function gameScore(userChoice) {
-    let results = determineWinner(userChoice, getComputerChoice()); // Calculate the result once
+    const results = determineWinner(userChoice, getComputerChoice()); // Calculate the result once
     
+    // If results is true, user point. Else, computer point.
     if (results == true) {
         userWins++;
         console.log("user wins");
