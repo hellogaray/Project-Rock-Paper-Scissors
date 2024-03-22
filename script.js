@@ -11,11 +11,12 @@ const COMPUTER_CHOICES = ["rock", "paper", "scissors"];
 // Declare variables for user and computer choices, and scores
 let userChoice;
 let computerChoice;
-let userWins;
-let computerWins;
+let userWins = 0;
+let computerWins = 0;
 
 // Determine the winner of a game round
 function determineWinner(userChoice, computerChoice) {
+    console.log("User: " + userChoice  + " vs Computer: " + computerChoice)
     // Check for a tie
     if (userChoice === computerChoice) {
         return "tie";
@@ -37,21 +38,29 @@ function gameScore(userChoice) {
     // If results is true, user point. Else, computer point.
     if (results == true) {
         userWins++;
-        console.log("user wins");
+        console.log("You won!");
     } else if (results == false) {
         computerWins++;
-        console.log("computer wins");
+        console.log("Computer wins!");
     } else {
-        console.log("tie");
+        console.log("It's a tie!");
     }
 
-    // Check if either player has reached a score of 5
-    if (userWins === 5 || computerWins === 5) {
-        console.log(userWins === 5 ? "You win!" : "Computer wins!");
-        resetScores()
-    }
+    console.log("User Wins: " + userWins)
+    console.log("Computer Wins: " + computerWins)
+    scoreCount(userWins, computerWins)
 }
 
+// Check if Computer or User has reached 5 wins
+function scoreCount(userWins, computerWins) {
+    // Check if either player has reached a score of 5
+    if (userWins == 5 || computerWins == 5) {
+        console.log(userWins === 5 ? "You win!" : "Computer wins!");
+        resetScores()
+    } else {
+        getInput()
+    }
+}
 // Randomly choose a hand for computer to play
 function getComputerChoice() {
     computerChoice = COMPUTER_CHOICES[(Math.floor(Math.random() * COMPUTER_CHOICES.length))];
@@ -63,3 +72,10 @@ function resetScores() {
     computerWins = 0;
     userWins = 0;
 }
+
+function getInput() {
+    var input = prompt("Rock, Paper, or Scissors?");
+    console.log(input.toLowerCase())
+    gameScore(input.toLowerCase())
+}
+getInput()
