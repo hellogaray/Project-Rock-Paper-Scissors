@@ -1,4 +1,19 @@
-# 🪨📄✂️ Rock Paper Scissors Game
+<div align="center">
+  <h1>Project-Rock-Paper-Scissors </h1>
+  <p>The Odin Project - Landing Page Project</p>
+  <p>
+    <img src="https://img.icons8.com/color/48/000000/html-5.png" alt="HTML5 Icon" width="40" height="40"/>
+    <img src="https://img.icons8.com/color/48/000000/css3.png" alt="CSS3 Icon" width="40" height="40"/>
+    <img src="https://img.icons8.com/color/48/000000/javascript.png" alt="JavaScript Icon" width="40" height="40"/>
+  </p>
+</div>
+
+<p align="center">
+  <img src="https://img.shields.io/github/last-commit/hellogaray/Project-Rock-Paper-Scissors " alt="GitHub last commit">
+  <img src="https://img.shields.io/github/repo-size/hellogaray/Project-Rock-Paper-Scissors " alt="GitHub repo size">
+  <img src="https://img.shields.io/github/license/hellogaray/Project-Rock-Paper-Scissors " alt="GitHub license">
+</p>
+
 
 Welcome to the Rock Paper Scissors Game! This is a simple yet thrilling game implemented using HTML, CSS, and JavaScript.
 
@@ -20,7 +35,13 @@ This project implements a basic Rock Paper Scissors game where the user can clic
 - Continue playing until one player reaches a score of 5.
 
 ## 🕹️ Original Version
+<div align="center">
+  <img src="./images/original.png" alt="Original Version" width="400">
+</div>
 
-![Original Version](./images/original.png)
+## 🕹️ Final Version
+<div align="center">
+  <img src="./images/final.png" alt="Final Version" width="400">
+</div>
 
-The image above shows the original version of the Rock Paper Scissors game, where the game was played using console logs for user input. In this version, players interacted with the game through the console.
+The images above show the original and final versions of the Rock Paper Scissors game. The original version uses the console to get the inut from the game and the new version has it's own UI to get input and show the results.
