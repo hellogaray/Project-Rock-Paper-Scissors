@@ -9,9 +9,9 @@
 </div>
 
 <p align="center">
-  <img src="https://img.shields.io/github/last-commit/hellogaray/Project-Rock-Paper-Scissors " alt="GitHub last commit">
-  <img src="https://img.shields.io/github/repo-size/hellogaray/Project-Rock-Paper-Scissors " alt="GitHub repo size">
-  <img src="https://img.shields.io/github/license/hellogaray/Project-Rock-Paper-Scissors " alt="GitHub license">
+  <img src="https://img.shields.io/github/last-commit/hellogaray/Project-Rock-Paper-Scissors" alt="GitHub last commit">
+  <img src="https://img.shields.io/github/repo-size/hellogaray/Project-Rock-Paper-Scissors" alt="GitHub repo size">
+  <img src="https://img.shields.io/github/license/hellogaray/Project-Rock-Paper-Scissors" alt="GitHub license">
 </p>
 
 
