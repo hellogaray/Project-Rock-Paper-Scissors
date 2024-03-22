@@ -57,8 +57,6 @@ function scoreCount(userWins, computerWins) {
     if (userWins == 5 || computerWins == 5) {
         console.log(userWins === 5 ? "You win!" : "Computer wins!");
         resetScores()
-    } else {
-        getInput()
     }
 }
 // Randomly choose a hand for computer to play
@@ -72,10 +70,3 @@ function resetScores() {
     computerWins = 0;
     userWins = 0;
 }
-
-function getInput() {
-    var input = prompt("Rock, Paper, or Scissors?");
-    console.log(input.toLowerCase())
-    gameScore(input.toLowerCase())
-}
-getInput()
