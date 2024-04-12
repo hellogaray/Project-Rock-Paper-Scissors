@@ -18,6 +18,19 @@ let computerWins = 0;
 const userScore = document.querySelector("#userScore");
 const computerScore = document.querySelector("#computerScore");
 
+// Get the container element for choices
+const choicesContainer = document.querySelector("#choices");
+
+// Add event listener to the container element
+choicesContainer.addEventListener("click", (event) => {
+    // Check if the clicked element is a button within the choices container
+    if (event.target.matches("button")) {
+        const choice = event.target.id; // Get the id of the clicked button
+        gameScore(choice); // Pass the choice to the gameScore function
+    }
+});
+
+
 // Update score in the DOM
 function updateScore(player, score) {
     player.textContent = score;
@@ -82,8 +95,3 @@ function resetScores() {
     computerWins = 0;
     userWins = 0;
 }
-
-gameScore("paper")
-gameScore("paper")
-gameScore("paper")
-gameScore("paper")

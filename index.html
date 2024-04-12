@@ -19,12 +19,24 @@
     <div class="content">
         <div class="logo">Logo</div>
         <div class="title">Rock Paper Scissors</div>
-        <div id="rock" class="choice">Rock</div>
-        <div id="paper" class="choice">Paper</div>
-        <div id="scissors" class="choice">Scissors</div>
+        <div id="choices">
+            <button id="rock" class="choice">Rock</button>
+            <button id="paper" class="choice">Paper</button>
+            <button id="scissors" class="choice">Scissors</button>
+        </div>
+        
         </p>
-        User Score: <div id="userScore">0</div>  
-        Computer Score: <div id="computerScore"></div>
+        <table id="scoreTable">
+            <tr>
+               <td> User Score: </td>
+               <td id="userScore"></td> 
+            </tr>
+            <tr>
+                <td>Computer Score:</td>
+                <td id="computerScore"></td>
+            </tr>
+        </table>
+        
         </p>
         <div class="button">Restart</div>
     </div>
