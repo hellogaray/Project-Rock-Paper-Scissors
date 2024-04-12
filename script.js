@@ -18,6 +18,10 @@ let computerWins = 0;
 const userScore = document.querySelector("#userScore");
 const computerScore = document.querySelector("#computerScore");
 
+// Update score in the DOM
+function updateScore(player, score) {
+    player.textContent = score;
+};
 
 // Determine the winner of a game round
 function determineWinner(userChoice, computerChoice) {
@@ -51,8 +55,8 @@ function gameScore(userChoice) {
         console.log("It's a tie!");
     }
 
-    userScore.textContent = userWins;
-    computerScore.textContent = computerWins;
+    updateScore(userScore, userWins)
+    updateScore(computerScore, computerWins)
 
     console.log("User Wins: " + userWins)
     console.log("Computer Wins: " + computerWins)
