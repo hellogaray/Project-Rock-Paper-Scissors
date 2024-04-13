@@ -14,6 +14,28 @@ body {
     flex: 1; /* Allow content to expand */
 }
 
+.logo {
+    width: 40%;
+    height: auto;
+    margin: auto;
+    display: block;
+
+}
+
+.balttescreen {
+    width: 500px;
+    height: 360px;
+    margin: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center; 
+    align-items: center; 
+    background-image: url('./images/bg_battle.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
 /* Footer */
 footer {
     display: flex;
@@ -33,3 +55,7 @@ h5 {
     color: #252222;
     text-align: center;
   }
+
+  .grayed-out {
+    filter: grayscale(100%);
+}

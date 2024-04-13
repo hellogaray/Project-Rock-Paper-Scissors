@@ -17,32 +17,47 @@
 </head>
 <body>
     <div class="content">
-        <div class="logo">Logo</div>
-        <div class="title">PokeBattle</div>
+        <img class="logo" src="./images/logo.png">
+            <!-- Pokemon Side for the NPC -->
+        <div class="balttescreen">
+            <div id="NPCchoices">
+                <div class="NPCPokeballs">
+                    <img src="./images/pokeball.png">
+                    <img src="./images/pokeball.png">
+                    <img src="./images/pokeball.png">
+                    <img src="./images/pokeball.png">
+                    <img src="./images/pokeball.png">
+                    <img src="./images/pokeball.png">
+                    <span id="NPCScore"></span> 
+                </div>
+               
+                <input type="image" src="./images/bulbasaur_icon.png" id="grass" />
+                <input type="image" src="./images/charmander_icon.png" id="fire" />
+                <input type="image" src="./images/squirtle_icon.png" id="water" />
+            </div>
 
-        <!-- Pokemon Choices for the User -->
-    <div id="choices">
-        <input type="image" src="./images/pokeball.png" id="grass" />
-        <span class="tooltip">Grass Type</span>
+            <!-- Pokemon Choices for the User -->
+            <div id="choices">
+                <div class="userPokeballs">
+                    <img src="./images/pokeball.png">
+                    <img src="./images/pokeball.png">
+                    <img src="./images/pokeball.png">
+                    <img src="./images/pokeball.png">
+                    <img src="./images/pokeball.png">
+                    <img src="./images/pokeball.png">
+                    <span id="userScore"></span> 
+                </div>
+               
+                <input type="image" src="./images/bulbasaur_back.png" id="grass" />
+                <span class="tooltip">Grass Type</span>
 
-        <input type="image" src="./images/pokeball.png" id="fire" />
-        <span class="tooltip">Fire Type</span>
+                <input type="image" src="./images/charmander_back.png" id="fire" />
+                <span class="tooltip">Fire Type</span>
 
-        <input type="image" src="./images/pokeball.png" id="water" />
-        <span class="tooltip">Water Type</span>
-    </div>
-
-        </p>
-        <table id="scoreTable">
-            <tr>
-               <td> User Score: </td>
-               <td id="userScore"></td> 
-            </tr>
-            <tr>
-                <td>Computer Score:</td>
-                <td id="computerScore"></td>
-            </tr>
-        </table>    
+                <input type="image" src="./images/squirtle_back.png" id="water" />
+                <span class="tooltip">Water Type</span>
+            </div>
+        </div>
     </div>
 
     <footer>

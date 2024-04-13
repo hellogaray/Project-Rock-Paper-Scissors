@@ -5,18 +5,23 @@ const WINNING_COMBINATIONS = {
     grass: "water"
 };
 
-// Define available choices for the computer
-const COMPUTER_CHOICES = ["water", "fire", "grass"];
+// Define available choices for the NPC
+const NPC_CHOICES = ["water", "fire", "grass"];
 
-// Declare variables for user and computer choices, and scores
+// Declare variables for user and NPC choices, and scores
 let userChoice;
-let computerChoice;
+let NPCChoice;
 let userWins = 0;
-let computerWins = 0;
+let NPCWins = 0;
 
 // Declare variables to update DOM
 const userScore = document.querySelector("#userScore");
-const computerScore = document.querySelector("#computerScore");
+const NPCScore = document.querySelector("#NPCScore");
+
+// Pokeballs
+const userPokeballs =  document.querySelectorAll(".userPokeballs img")
+const NPCPokeballs =  document.querySelectorAll(".NPCPokeballs img")
+
 
 // Get the container element for choices
 const choicesContainer = document.querySelector("#choices");
@@ -37,61 +42,82 @@ function updateScore(player, score) {
 };
 
 // Determine the winner of a game round
-function determineWinner(userChoice, computerChoice) {
-    console.log("User: " + userChoice  + " vs Computer: " + computerChoice)
+function determineWinner(userChoice, NPCChoice) {
+    console.log("User: " + userChoice  + " vs NPC: " + NPCChoice)
     // Check for a tie
-    if (userChoice === computerChoice) {
+    if (userChoice === NPCChoice) {
         return "tie";
     }
 
     // Check if user wins
-    if (WINNING_COMBINATIONS[userChoice] === computerChoice) {
+    if (WINNING_COMBINATIONS[userChoice] === NPCChoice) {
         return true; // Return true if user wins
     }
 
-    // Computer wins
-    return false; // Return false if computer wins
+    // NPC wins
+    return false; // Return false if NPC wins
+}
+
+// Loop through pokeballs and add grayed-out class to the first 'count' pokeballs
+function grayOutPokeballs(pokeballs, count) {
+    for (let i = pokeballs.length - 1; i >= pokeballs.length - count; i--) {
+        pokeballs[i].classList.add('grayed-out');
+    }
 }
 
 // Update game score based on user's choice
 function gameScore(userChoice) {
-    const results = determineWinner(userChoice, getComputerChoice()); // Calculate the result once
+    const results = determineWinner(userChoice, getNPCChoice()); // Calculate the result once
     
-    // If results is true, user point. Else, computer point.
+    // If results is true, user point. Else, NPC point.
     if (results == true) {
         userWins++;
+        grayOutPokeballs(NPCPokeballs, userWins); // Gray out the correct number of NPC pokeballs
         console.log("You won!");
     } else if (results == false) {
-        computerWins++;
-        console.log("Computer wins!");
+        NPCWins++;
+        grayOutPokeballs(userPokeballs, NPCWins); // Gray out the correct number of user pokeballs
+        console.log("NPC wins!");
     } else {
         console.log("It's a tie!");
     }
 
-    updateScore(userScore, userWins)
-    updateScore(computerScore, computerWins)
+    updateScore(userScore, userWins);
+    updateScore(NPCScore, NPCWins);
 
-    console.log("User Wins: " + userWins)
-    console.log("Computer Wins: " + computerWins)
-    scoreCount(userWins, computerWins)
+    console.log("User Wins: " + userWins);
+    console.log("NPC Wins: " + NPCWins);
+    scoreCount(userWins, NPCWins);
 }
 
-// Check if Computer or User has reached 5 wins
-function scoreCount(userWins, computerWins) {
-    // Check if either player has reached a score of 5
-    if (userWins == 5 || computerWins == 5) {
-        console.log(userWins === 5 ? "You win!" : "Computer wins!");
+
+// Check if NPC or User has reached 6 wins
+function scoreCount(userWins, NPCWins) {
+    // Check if either player has reached a score of 6
+    if (userWins == 6 || NPCWins == 6) {
+        console.log(userWins === 6 ? "You win!" : "NPC wins!");
         resetScores()
     }
 }
-// Randomly choose a hand for computer to play
-function getComputerChoice() {
-    computerChoice = COMPUTER_CHOICES[(Math.floor(Math.random() * COMPUTER_CHOICES.length))];
-    return computerChoice;
+// Randomly choose a hand for NPC to play
+function getNPCChoice() {
+    NPCChoice = NPC_CHOICES[(Math.floor(Math.random() * NPC_CHOICES.length))];
+    return NPCChoice;
 }
 
 // Resets Scores to 0
 function resetScores() {
-    computerWins = 0;
+    NPCWins = 0;
     userWins = 0;
+
+    updateScore(userScore, userWins);
+    updateScore(NPCScore, NPCWins);
+
+    userPokeballs.forEach(pokeball => {
+        pokeball.classList.remove('grayed-out');
+    });
+    NPCPokeballs.forEach(pokeball => {
+        pokeball.classList.remove('grayed-out');
+    });
 }
+
