@@ -120,4 +120,3 @@ function resetScores() {
         pokeball.classList.remove('grayed-out');
     });
 }
-
