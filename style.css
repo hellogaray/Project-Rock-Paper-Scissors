@@ -4,6 +4,9 @@ body {
     display: flex; 
     flex-direction: column; /* Stack children vertically */
     min-height: 100vh; /* Minimum height to fill viewport */
+    background-image: url('./images/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* Main content area */
