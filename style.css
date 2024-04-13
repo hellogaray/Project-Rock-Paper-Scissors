@@ -11,17 +11,6 @@ body {
     flex: 1; /* Allow content to expand */
 }
 
-/* Choices for user */
-.choice {
-    cursor: pointer;
-    padding: 10px;
-    margin: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f0f0f0;
-    display: inline-block;
-}
-
 /* Footer */
 footer {
     display: flex;

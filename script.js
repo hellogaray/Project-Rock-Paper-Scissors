@@ -1,12 +1,12 @@
 // Define winning combinations where the key beats the value
 const WINNING_COMBINATIONS = {
-    rock: "scissors",
-    paper: "rock",
-    scissors: "paper"
+    fire: "grass",
+    water: "fire",
+    grass: "water"
 };
 
 // Define available choices for the computer
-const COMPUTER_CHOICES = ["rock", "paper", "scissors"];
+const COMPUTER_CHOICES = ["water", "fire", "grass"];
 
 // Declare variables for user and computer choices, and scores
 let userChoice;
@@ -24,7 +24,7 @@ const choicesContainer = document.querySelector("#choices");
 // Add event listener to the container element
 choicesContainer.addEventListener("click", (event) => {
     // Check if the clicked element is a button within the choices container
-    if (event.target.matches("button")) {
+    if (event.target.matches("input")) {
         const choice = event.target.id; // Get the id of the clicked button
         gameScore(choice); // Pass the choice to the gameScore function
     }
