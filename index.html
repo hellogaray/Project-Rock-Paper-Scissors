@@ -7,26 +7,42 @@
     <script src="./script.js" defer></script>
     
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
     <link rel="manifest" href="/favicon_io/site.webmanifest">
 
-    <title>Rock Paper Scissors</title>
+    <title>PokeBattle</title>
 
 </head>
 <body>
     <div class="content">
         <div class="logo">Logo</div>
-        <div class="title">Rock Paper Scissors</div>
-        <div id="rock" class="choice">Rock</div>
-        <div id="paper" class="choice">Paper</div>
-        <div id="scissors" class="choice">Scissors</div>
+        <div class="title">PokeBattle</div>
+
+        <!-- Pokemon Choices for the User -->
+    <div id="choices">
+        <input type="image" src="./images/pokeball.png" id="grass" />
+        <span class="tooltip">Grass Type</span>
+
+        <input type="image" src="./images/pokeball.png" id="fire" />
+        <span class="tooltip">Fire Type</span>
+
+        <input type="image" src="./images/pokeball.png" id="water" />
+        <span class="tooltip">Water Type</span>
+    </div>
+
         </p>
-        User Score: <div id="userScore">0</div>  
-        Computer Score: <div id="computerScore">0</div>
-        </p>
-        <div class="button">Restart</div>
+        <table id="scoreTable">
+            <tr>
+               <td> User Score: </td>
+               <td id="userScore"></td> 
+            </tr>
+            <tr>
+                <td>Computer Score:</td>
+                <td id="computerScore"></td>
+            </tr>
+        </table>    
     </div>
 
     <footer>

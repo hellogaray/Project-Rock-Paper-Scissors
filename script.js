@@ -1,12 +1,12 @@
 // Define winning combinations where the key beats the value
 const WINNING_COMBINATIONS = {
-    rock: "scissors",
-    paper: "rock",
-    scissors: "paper"
+    fire: "grass",
+    water: "fire",
+    grass: "water"
 };
 
 // Define available choices for the computer
-const COMPUTER_CHOICES = ["rock", "paper", "scissors"];
+const COMPUTER_CHOICES = ["water", "fire", "grass"];
 
 // Declare variables for user and computer choices, and scores
 let userChoice;
@@ -18,6 +18,23 @@ let computerWins = 0;
 const userScore = document.querySelector("#userScore");
 const computerScore = document.querySelector("#computerScore");
 
+// Get the container element for choices
+const choicesContainer = document.querySelector("#choices");
+
+// Add event listener to the container element
+choicesContainer.addEventListener("click", (event) => {
+    // Check if the clicked element is a button within the choices container
+    if (event.target.matches("input")) {
+        const choice = event.target.id; // Get the id of the clicked button
+        gameScore(choice); // Pass the choice to the gameScore function
+    }
+});
+
+
+// Update score in the DOM
+function updateScore(player, score) {
+    player.textContent = score;
+};
 
 // Determine the winner of a game round
 function determineWinner(userChoice, computerChoice) {
@@ -51,8 +68,8 @@ function gameScore(userChoice) {
         console.log("It's a tie!");
     }
 
-    userScore.textContent = userWins;
-    computerScore.textContent = computerWins;
+    updateScore(userScore, userWins)
+    updateScore(computerScore, computerWins)
 
     console.log("User Wins: " + userWins)
     console.log("Computer Wins: " + computerWins)
@@ -78,8 +95,3 @@ function resetScores() {
     computerWins = 0;
     userWins = 0;
 }
-
-gameScore("paper")
-gameScore("paper")
-gameScore("paper")
-gameScore("paper")
