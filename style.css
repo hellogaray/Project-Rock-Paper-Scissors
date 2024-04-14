@@ -1,9 +1,26 @@
+@font-face {
+    font-family: 'PokemonClassic';
+    src: url('misc/PokemonClassic.ttf') format('truetype');
+    /* Add more src declarations for other font formats if necessary */
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Apply the font to specific elements */
+body {
+    font-family: 'PokemonClassic', sans-serif;
+}
+
 /* Body styles */
 body {
     margin: 0;
     display: flex; 
     flex-direction: column; /* Stack children vertically */
     min-height: 100vh; /* Minimum height to fill viewport */
+    background-image: url('./images/bg.jpg');
+    background-color: #38582f;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* Main content area */
@@ -11,6 +28,55 @@ body {
     flex: 1; /* Allow content to expand */
 }
 
+.logo {
+    width: 40%;
+    height: auto;
+    margin: auto;
+    display: block;
+    padding-bottom: 50px;
+}
+
+.balttescreen {
+    width: 556px;
+    height: 371px;
+    margin: auto;
+    display: block;
+    flex-wrap: nowrap;
+    align-items: center; 
+    background-image: url('./images/bg_battle.png');
+    background-repeat: no-repeat;
+    overflow: hidden; /* Hide overflow content */
+    border: 20px solid #fff; /* TV frame */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* TV screen shadow */
+}
+
+
+.choices, .NPCchoices {
+    display: flex;
+}
+
+.userPokeballs {
+    display: flex;
+    justify-content: right;
+    padding-top: 10px;
+    padding-right: 50px;
+}
+
+.NPCPokeballs {
+    display: flex;
+    padding-top: 45px;
+    padding-left: 80px;
+    justify-content: left;
+}
+.userPokemon, .NPCPokemon {
+    display: flex;
+}
+.userPokemon {
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    color: #fff;
+}
 /* Footer */
 footer {
     display: flex;
@@ -24,9 +90,12 @@ footer a {
 }
 
 h5 {
-    font-family: "Abhaya Libre", serif;
     font-weight: 600;
     font-style: normal;
     color: #252222;
     text-align: center;
   }
+
+  .grayed-out {
+    filter: grayscale(100%);
+}
