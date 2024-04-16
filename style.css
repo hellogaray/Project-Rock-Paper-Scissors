@@ -106,6 +106,7 @@ body {
 #NPCPokemon {
     min-height: 96px;;
     max-height: 90px;
+    width: auto;
     justify-content: end;
     padding-right: 90px;
 }

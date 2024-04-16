@@ -26,8 +26,9 @@ const NPCPokeballs =  document.querySelectorAll(".NPCPokeballs img")
 const NPCPokemon = document.querySelector("#NPCPokemon");
 const npcImages = '';
 
-// Get the container element for choices
-const choicesContainer = document.querySelector("#choices");
+const choicesContainer = document.getElementById("choices");
+const userPokemon = document.getElementsByClassName("userPokemon");
+
 
 // Add event listener to the container element
 choicesContainer.addEventListener("click", (event) => {
@@ -84,12 +85,17 @@ function removeImage() {
     }
 }
 
+function removething() {
+    choicesContainer.removeChild(userPokemon);
+}
+
 // Update game score based on user's choice
 function gameScore(userChoice) {
     removeImage(NPCChoice)
     NPCChoice =  getNPCChoice()
     createImage(NPCChoice)
-    
+
+
     const results = determineWinner(userChoice, NPCChoice); // Calculate the result once
 
     // If results is true, user point. Else, NPC point.
@@ -97,12 +103,17 @@ function gameScore(userChoice) {
         userWins++;
         grayOutPokeballs(NPCPokeballs, userWins); // Gray out the correct number of NPC pokeballs
         console.log("You won!");
+        choicesContainer.append("Enemy used a " + NPCChoice + " type pokemon. Your pokemon fainted.")
     } else if (results == false) {
         NPCWins++;
         grayOutPokeballs(userPokeballs, NPCWins); // Gray out the correct number of user pokeballs
         console.log("NPC wins!");
+        choicesContainer.append("Enemy used a " + NPCChoice + " type pokemon. Your pokemon fainted.")
+
     } else {
         console.log("It's a tie!");
+        choicesContainer.append("You both chose the same. It's a tie!")
+
     }
 
     // Displays the Scores - Used during development
