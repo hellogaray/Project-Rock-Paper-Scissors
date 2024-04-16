@@ -22,6 +22,9 @@ const NPCScore = document.querySelector("#NPCScore");
 const userPokeballs =  document.querySelectorAll(".userPokeballs img")
 const NPCPokeballs =  document.querySelectorAll(".NPCPokeballs img")
 
+// NPC Pokemon
+const NPCPokemon = document.querySelector("#NPCPokemon");
+const npcImages = '';
 
 // Get the container element for choices
 const choicesContainer = document.querySelector("#choices");
@@ -35,8 +38,7 @@ choicesContainer.addEventListener("click", (event) => {
     }
 });
 
-
-// Update score in the DOM
+// Update score in the DOM - Used during development
 function updateScore(player, score) {
     player.textContent = score;
 };
@@ -65,10 +67,31 @@ function grayOutPokeballs(pokeballs, count) {
     }
 }
 
+// Create an image for the NPC Pokemon
+function createImage(image) {
+    const img = document.createElement("img");
+    img.src = 'images/NPC' + image + '.png';
+    NPCPokemon.appendChild(img)
+}
+
+// Remove the old NPC Pokemon
+function removeImage() {
+    const NPCPokemon = document.getElementById("NPCPokemon");
+    const NPCImage = NPCPokemon.querySelector("img"); 
+
+    if (NPCImage) {
+        NPCPokemon.removeChild(NPCImage);
+    }
+}
+
 // Update game score based on user's choice
 function gameScore(userChoice) {
-    const results = determineWinner(userChoice, getNPCChoice()); // Calculate the result once
+    removeImage(NPCChoice)
+    NPCChoice =  getNPCChoice()
+    createImage(NPCChoice)
     
+    const results = determineWinner(userChoice, NPCChoice); // Calculate the result once
+
     // If results is true, user point. Else, NPC point.
     if (results == true) {
         userWins++;
@@ -82,8 +105,9 @@ function gameScore(userChoice) {
         console.log("It's a tie!");
     }
 
-    updateScore(userScore, userWins);
-    updateScore(NPCScore, NPCWins);
+    // Displays the Scores - Used during development
+    // updateScore(userScore, userWins);
+    // updateScore(NPCScore, NPCWins);
 
     console.log("User Wins: " + userWins);
     console.log("NPC Wins: " + NPCWins);
