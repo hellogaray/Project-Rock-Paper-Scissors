@@ -16,8 +16,10 @@
 
 </head>
 <body>
-    <div class="content">
+    <div class="header">
         <img class="logo" src="./images/logo.png">
+    </div>
+    <div class="content">
             <!-- Pokemon Side for the NPC -->
         <div class="balttescreen">
             <div id="NPCchoices">
@@ -30,14 +32,15 @@
                     <img src="./images/pokeball.png">
                     <span id="NPCScore"></span> 
                 </div>
-                <div class="NPCPokemon">
-                    <input type="image" src="./images/bulbasaur_icon.png" id="grass" />
-                    <input type="image" src="./images/charmander_icon.png" id="fire" />
-                    <input type="image" src="./images/squirtle_icon.png" id="water" />
+                <div id="NPCPokemon">
+                    <!-- <input type="image" src="./images/bulbasaur_icon.png" id="NPCgrass" class="imageNPC" />
+                    <input type="image" src="./images/charmander_icon.png" id="NPCfire" class="imageNPC" />
+                    <input type="image" src="./images/squirtle_icon.png" id="NPCwater" class="imageNPC" /> -->
                 </div>
             </div>
 
             <!-- Pokemon Choices for the User -->
+
             <div id="choices">
                 <div class="userPokeballs">
                     <img src="./images/pokeball.png">
@@ -48,13 +51,21 @@
                     <img src="./images/pokeball.png">
                     <span id="userScore"></span> 
                 </div>
+  
                <div class="userPokemon">
-                    <input type="image" src="./images/bulbasaur_back.png" id="grass" />
-                    <div class="tooltip">Grass</div>
-                    <input type="image" src="./images/charmander_back.png" id="fire" />
-                    <div class="tooltip">Fire</div>
-                    <input type="image" src="./images/squirtle_back.png" id="water" />
-                    <div class="tooltip">Water</div>
+                    <div class="imagePKMN">
+                        <input type="image" src="./images/bulbasaur_back.png" id="grass"/>
+                        Grass
+                    </div>
+                    <div class="imagePKMN">
+                        <input type="image" src="./images/charmander_back.png" id="fire" />
+                        Fire
+                    </div>
+                    
+                    <div class="imagePKMN">
+                        <input type="image" src="./images/squirtle_back.png" id="water"  />
+                        Water
+                    </div>
                 </div>
             </div>
         </div>
