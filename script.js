@@ -38,11 +38,6 @@ choicesContainer.addEventListener("click", (event) => {
     }
 });
 
-// Update score in the DOM - Used during development
-function updateScore(player, score) {
-    player.textContent = score;
-};
-
 // Determine the winner of a game round
 function determineWinner(playerChoice, NPCChoice) {
     console.log("Player: " + playerChoice + " vs NPC: " + NPCChoice);
@@ -119,7 +114,6 @@ function gameScore(playerChoice) {
     // Displays the Scores - Used during development
     // updateScore(playerScore, playerWins);
     // updateScore(NPCScore, NPCWins);
-
     battleLogs(results, NPCChoice)
     scoreCount(playerWins, NPCWins);
 }
@@ -153,3 +147,9 @@ function resetScores() {
         pokeball.classList.remove('grayed-out');
     });
 }
+
+// USED DURING DEVELOPMENT ONLY
+// Update score in the DOM
+function updateScore(player, score) {
+    player.textContent = score;
+};
