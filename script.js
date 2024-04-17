@@ -8,26 +8,26 @@ const WINNING_COMBINATIONS = {
 // Define available choices for the NPC
 const NPC_CHOICES = ["water", "fire", "grass"];
 
-// Declare variables for user and NPC choices, and scores
-let userChoice;
+// Declare variables for player and NPC choices, and scores
+let playerChoice;
 let NPCChoice;
-let userWins = 0;
+let playerWins = 0;
 let NPCWins = 0;
 
 // Declare variables to update DOM
-const userScore = document.querySelector("#userScore");
+const playerScore = document.querySelector("#playerScore");
 const NPCScore = document.querySelector("#NPCScore");
 
 // Pokeballs
-const userPokeballs =  document.querySelectorAll(".userPokeballs img")
-const NPCPokeballs =  document.querySelectorAll(".NPCPokeballs img")
+const playerPokeballs = document.querySelectorAll(".playerPokeballs img");
+const NPCPokeballs = document.querySelectorAll(".NPCPokeballs img");
 
 // NPC Pokemon
 const NPCPokemon = document.querySelector("#NPCPokemon");
 const npcImages = '';
 
-// Get the container element for choices
-const choicesContainer = document.querySelector("#choices");
+const choicesContainer = document.getElementById("choices");
+const playerPokemon = document.getElementsByClassName("playerPokemon");
 
 // Add event listener to the container element
 choicesContainer.addEventListener("click", (event) => {
@@ -44,16 +44,16 @@ function updateScore(player, score) {
 };
 
 // Determine the winner of a game round
-function determineWinner(userChoice, NPCChoice) {
-    console.log("User: " + userChoice  + " vs NPC: " + NPCChoice)
+function determineWinner(playerChoice, NPCChoice) {
+    console.log("Player: " + playerChoice + " vs NPC: " + NPCChoice);
     // Check for a tie
-    if (userChoice === NPCChoice) {
+    if (playerChoice === NPCChoice) {
         return "tie";
     }
 
-    // Check if user wins
-    if (WINNING_COMBINATIONS[userChoice] === NPCChoice) {
-        return true; // Return true if user wins
+    // Check if player wins
+    if (WINNING_COMBINATIONS[playerChoice] === NPCChoice) {
+        return true; // Return true if player wins
     }
 
     // NPC wins
@@ -77,49 +77,58 @@ function createImage(image) {
 // Remove the old NPC Pokemon
 function removeImage() {
     const NPCPokemon = document.getElementById("NPCPokemon");
-    const NPCImage = NPCPokemon.querySelector("img"); 
+    const NPCImage = NPCPokemon.querySelector("img");
 
     if (NPCImage) {
         NPCPokemon.removeChild(NPCImage);
     }
 }
 
-// Update game score based on user's choice
-function gameScore(userChoice) {
-    removeImage(NPCChoice)
-    NPCChoice =  getNPCChoice()
-    createImage(NPCChoice)
-    
-    const results = determineWinner(userChoice, NPCChoice); // Calculate the result once
-
-    // If results is true, user point. Else, NPC point.
+// In control of the logs show in Console Log and the DOM
+function battleLogs(results, NPCChoice) {
     if (results == true) {
-        userWins++;
-        grayOutPokeballs(NPCPokeballs, userWins); // Gray out the correct number of NPC pokeballs
-        console.log("You won!");
+        console.log("Point to player.");
+        choicesContainer.append("Enemy used a " + NPCChoice + " type pokemon. Your pokemon fainted.")
     } else if (results == false) {
-        NPCWins++;
-        grayOutPokeballs(userPokeballs, NPCWins); // Gray out the correct number of user pokeballs
-        console.log("NPC wins!");
+        console.log("Point to NPC.");
+        choicesContainer.append("Enemy used a " + NPCChoice + " type pokemon. Your pokemon fainted.")
     } else {
         console.log("It's a tie!");
+        choicesContainer.append("You both chose the same. It's a tie!")
+    }
+    console.log("Player: " + playerWins + " - NPC: " + NPCWins);
+}
+
+// Update game score based on player's choice
+function gameScore(playerChoice) {
+    removeImage(NPCChoice)
+    NPCChoice = getNPCChoice()
+    createImage(NPCChoice)
+
+    const results = determineWinner(playerChoice, NPCChoice); // Calculate the result once
+
+    // If results is true, player point. Else, NPC point.
+    if (results == true) {
+        playerWins++;
+        grayOutPokeballs(NPCPokeballs, playerWins); // Gray out the correct number of NPC pokeballs
+    } else if (results == false) {
+        NPCWins++;
+        grayOutPokeballs(playerPokeballs, NPCWins); // Gray out the correct number of player pokeballs
     }
 
     // Displays the Scores - Used during development
-    // updateScore(userScore, userWins);
+    // updateScore(playerScore, playerWins);
     // updateScore(NPCScore, NPCWins);
 
-    console.log("User Wins: " + userWins);
-    console.log("NPC Wins: " + NPCWins);
-    scoreCount(userWins, NPCWins);
+    battleLogs(results, NPCChoice)
+    scoreCount(playerWins, NPCWins);
 }
 
-
-// Check if NPC or User has reached 6 wins
-function scoreCount(userWins, NPCWins) {
+// Check if NPC or Player has reached 6 wins
+function scoreCount(playerWins, NPCWins) {
     // Check if either player has reached a score of 6
-    if (userWins == 6 || NPCWins == 6) {
-        console.log(userWins === 6 ? "You win!" : "NPC wins!");
+    if (playerWins == 6 || NPCWins == 6) {
+        console.log(playerWins === 6 ? "You won the game!" : "NPC wins!");
         resetScores()
     }
 }
@@ -132,12 +141,12 @@ function getNPCChoice() {
 // Resets Scores to 0
 function resetScores() {
     NPCWins = 0;
-    userWins = 0;
+    playerWins = 0;
 
-    updateScore(userScore, userWins);
+    updateScore(playerScore, playerWins);
     updateScore(NPCScore, NPCWins);
 
-    userPokeballs.forEach(pokeball => {
+    playerPokeballs.forEach(pokeball => {
         pokeball.classList.remove('grayed-out');
     });
     NPCPokeballs.forEach(pokeball => {

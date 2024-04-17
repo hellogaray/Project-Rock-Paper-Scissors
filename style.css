@@ -62,7 +62,7 @@ body {
     display: flex;
 }
 
-.userPokeballs {
+.playerPokeballs {
     display: flex;
     justify-content: end;
     padding-top: 12px;
@@ -98,7 +98,7 @@ body {
     --_p: 100%
 }
 
-.userPokemon, #NPCPokemon {
+.playerPokemon, #NPCPokemon {
     display: flex;
     transition: all .3s ease-in-out;
 }
@@ -106,11 +106,12 @@ body {
 #NPCPokemon {
     min-height: 96px;;
     max-height: 90px;
+    width: auto;
     justify-content: end;
     padding-right: 90px;
 }
 
-.userPokemon {
+.playerPokemon {
     justify-content: space-evenly;
     padding: 60px;
     color: #fff;
