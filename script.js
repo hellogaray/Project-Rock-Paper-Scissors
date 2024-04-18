@@ -24,11 +24,30 @@ const NPCPokeballs = document.querySelectorAll(".NPCPokeballs img");
 
 // NPC Pokemon
 const NPCPokemon = document.querySelector("#NPCPokemon");
-
 const npcImages = '';
 const choicesContainer = document.getElementById("choices");
 const playerPokemon = document.getElementsByClassName("playerPokemon");
+
+// Log Container
 const battleLogsContainer = document.getElementById("battleLogsContainer");
+const textElement = document.createElement("span");
+
+// Sounds and Song
+var themeSong = new Audio('./music/theme.mp3');
+var faintSound = new Audio('./music/faint.wav');
+var winSound = new Audio('./music/win.wav');
+var tieSound = new Audio('./music/tie.wav');
+document.getElementById("playContainer").addEventListener("click", togglePlayPause);
+
+// Play and Pause Music Toggle
+function togglePlayPause() {
+    // Play music if div is clicked
+    if (themeSong.paused) {
+        themeSong.play();
+    } else {
+        themeSong.pause();
+    }
+}
 
 // Add event listener to the container element
 choicesContainer.addEventListener("click", (event) => {
@@ -78,26 +97,31 @@ function removeImage() {
         NPCPokemon.removeChild(NPCImage);
     }
 }
-const textElement = document.createElement("span");
 
 // In control of the logs show in Console Log and the DOM
+// In control of the logs show in Console Log and the DOM
 function battleLogs(results, NPCChoice) {
-    clearBattleLogs()
+    clearBattleLogs();
 
-    if (results == true) {
+    if (results === true) {
         console.log("Point to player.");
-        textElement.textContent =  "Enemy used a " + NPCChoice + " type pokemon. Their pokemon has fainted.";
-    } else if (results == false) {
+        winSound.play();
+        NPCPokemon.querySelector("img").classList.add('npc-pokemon');
+        textElement.textContent = "Enemy used a " + NPCChoice + " type pokemon. Their pokemon has fainted.";
+    } else if (results === false) {
         console.log("Point to NPC.");
+        faintSound.play();
         textElement.textContent = "Enemy used a " + NPCChoice + " type pokemon. Your pokemon has fainted.";
     } else {
         console.log("It's a tie!");
+        tieSound.play();
         textElement.textContent = "You both chose a " + NPCChoice + " type pokemon. Both pokemon have fainted.";
     }
     
-    battleLogsContainer.appendChild(textElement)
+    battleLogsContainer.appendChild(textElement);
     console.log("Player: " + playerWins + " - NPC: " + NPCWins);
 }
+
 
 // Update game score based on player's choice
 function gameScore(playerChoice) {
