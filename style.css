@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'PokemonClassic';
-    src: url('misc/PokemonClassic.ttf') format('truetype');
+    src: url('font/PokemonClassic.ttf') format('truetype');
     /* Add more src declarations for other font formats if necessary */
     font-weight: normal;
     font-style: normal;
@@ -20,6 +20,16 @@ header {
     margin: auto;
     display: block;
     padding-bottom: 2rem;
+}
+
+#playContainer {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    font-size: 8px;
+    align-items: center;
+    align-content: center;
 }
 
 /* Body */
@@ -133,4 +143,19 @@ footer a {
 
 h5 {
     color: #252222;
+}
+
+/* Animation for Defeating NPC Pokemon */
+@keyframes fadeOutDown {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
+.npc-pokemon {
+    animation: fadeOutDown 1.5s ease forwards;
 }
