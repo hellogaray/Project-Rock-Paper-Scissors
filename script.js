@@ -24,10 +24,11 @@ const NPCPokeballs = document.querySelectorAll(".NPCPokeballs img");
 
 // NPC Pokemon
 const NPCPokemon = document.querySelector("#NPCPokemon");
-const npcImages = '';
 
+const npcImages = '';
 const choicesContainer = document.getElementById("choices");
 const playerPokemon = document.getElementsByClassName("playerPokemon");
+const battleLogsContainer = document.getElementById("battleLogsContainer");
 
 // Add event listener to the container element
 choicesContainer.addEventListener("click", (event) => {
@@ -71,26 +72,30 @@ function createImage(image) {
 
 // Remove the old NPC Pokemon
 function removeImage() {
-    const NPCPokemon = document.getElementById("NPCPokemon");
     const NPCImage = NPCPokemon.querySelector("img");
 
     if (NPCImage) {
         NPCPokemon.removeChild(NPCImage);
     }
 }
+const textElement = document.createElement("span");
 
 // In control of the logs show in Console Log and the DOM
 function battleLogs(results, NPCChoice) {
+    clearBattleLogs()
+
     if (results == true) {
         console.log("Point to player.");
-        choicesContainer.append("Enemy used a " + NPCChoice + " type pokemon. Your pokemon fainted.")
+        textElement.textContent =  "Enemy used a " + NPCChoice + " type pokemon. Their pokemon has fainted.";
     } else if (results == false) {
         console.log("Point to NPC.");
-        choicesContainer.append("Enemy used a " + NPCChoice + " type pokemon. Your pokemon fainted.")
+        textElement.textContent = "Enemy used a " + NPCChoice + " type pokemon. Your pokemon has fainted.";
     } else {
         console.log("It's a tie!");
-        choicesContainer.append("You both chose the same. It's a tie!")
+        textElement.textContent = "You both chose a " + NPCChoice + " type pokemon. Both pokemon have fainted.";
     }
+    
+    battleLogsContainer.appendChild(textElement)
     console.log("Player: " + playerWins + " - NPC: " + NPCWins);
 }
 
@@ -114,6 +119,7 @@ function gameScore(playerChoice) {
     // Displays the Scores - Used during development
     // updateScore(playerScore, playerWins);
     // updateScore(NPCScore, NPCWins);
+
     battleLogs(results, NPCChoice)
     scoreCount(playerWins, NPCWins);
 }
@@ -121,9 +127,14 @@ function gameScore(playerChoice) {
 // Check if NPC or Player has reached 6 wins
 function scoreCount(playerWins, NPCWins) {
     // Check if either player has reached a score of 6
-    if (playerWins == 6 || NPCWins == 6) {
-        console.log(playerWins === 6 ? "You won the game!" : "NPC wins!");
-        resetScores()
+    if (playerWins > 5 || NPCWins > 5) {
+        let winner;
+        console.log(playerWins === 6 ? winner = "You" : winner = "NPC");
+        if (confirm(winner + " won the game! Would you like to play again?")) {
+            resetScores()
+        } else {
+            
+        }
     }
 }
 // Randomly choose a hand for NPC to play
@@ -132,13 +143,24 @@ function getNPCChoice() {
     return NPCChoice;
 }
 
+// Clears the text from the previous battle
+function clearBattleLogs() {
+    if (textElement != "") {
+        textElement.textContent = ""
+    }
+
+    battleLogsContainer.appendChild(textElement)
+}
+
 // Resets Scores to 0
 function resetScores() {
     NPCWins = 0;
     playerWins = 0;
+    setTimeout(clearBattleLogs, 2000);
 
-    updateScore(playerScore, playerWins);
-    updateScore(NPCScore, NPCWins);
+    // USED DURING DEVELOPMENT ONLY
+    //updateScore(playerScore, playerWins);
+    //updateScore(NPCScore, NPCWins);
 
     playerPokeballs.forEach(pokeball => {
         pokeball.classList.remove('grayed-out');

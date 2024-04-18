@@ -22,10 +22,6 @@ header {
     padding-bottom: 2rem;
 }
 
-.imageNPC {
-    opacity: 0;
-}
-
 /* Body */
 body {
     font-family: 'PokemonClassic', sans-serif;
@@ -45,6 +41,15 @@ body {
     padding: 3rem;
 }
 
+#battleLogsContainer {
+    width: auto;
+    overflow: scroll;
+    color: #fff;
+    font-size: 14px;
+    background-position-y: absolute;
+    margin: 0 50px 0 40px;
+}
+
 .balttescreen {
     width: 556px;
     height: 371px;
@@ -58,15 +63,15 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
 }
 
-.choices, .NPCchoices {
+#choices {
     display: flex;
+    flex-direction: column;
 }
 
 .playerPokeballs {
-    display: flex;
-    justify-content: end;
-    padding-top: 12px;
-    padding-right: 50px;
+    margin-top: 12px;
+    margin-right: 50px;
+    margin-left: auto;
 }
 
 .NPCPokeballs {
@@ -83,19 +88,13 @@ body {
 /* Effect for the Pokemon */
 .imagePKMN {
     filter: grayscale(80%);
-    transform: scale(.75);
     display: flex;
     flex-direction: column;
-    font-size: .8rem;
     transition: 0.5s;
-    text-align: center;
 }
 
 .imagePKMN:hover {
     filter: none;
-    transform: scale(1);
-    font-size: .7rem;
-    --_p: 100%
 }
 
 .playerPokemon, #NPCPokemon {
@@ -112,20 +111,10 @@ body {
 }
 
 .playerPokemon {
-    justify-content: space-evenly;
-    padding: 60px;
+    padding-left: 40px;
     color: #fff;
 }
 
-.imagePKMN #grass, .imagePKMN #fire, .imagePKMN #water {
-    width: 90%;
-}
-
-h5 {
-    font-weight: 600;
-    font-style: normal;
-    color: #252222;
-}
 
 /* Footer */
 footer {
@@ -140,4 +129,8 @@ footer {
 footer a {
     text-decoration: none;
     color: #fff;
+}
+
+h5 {
+    color: #252222;
 }
