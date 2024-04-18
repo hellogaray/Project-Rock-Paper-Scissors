@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="./style.css">
+    
+    <!-- Script -->
     <script src="./script.js" defer></script>
     
     <!-- Favicon -->
@@ -13,16 +18,21 @@
     <link rel="manifest" href="/favicon_io/site.webmanifest">
 
     <title>PokeBattle</title>
-
 </head>
+
 <body>
+    <!-- Header -->
     <div class="header">
         <img class="logo" src="./images/logo.png">
     </div>
+
+    <!-- Content -->
     <div class="content">
-            <!-- Pokemon Side for the NPC -->
+        <!-- Battle Screen -->
         <div class="balttescreen">
+            <!-- NPC Side -->
             <div id="NPCchoices">
+                <!-- NPC Side -->
                 <div class="NPCPokeballs">
                     <img src="./images/pokeball.png">
                     <img src="./images/pokeball.png">
@@ -33,15 +43,12 @@
                     <span id="NPCScore"></span> 
                 </div>
                 <div id="NPCPokemon">
-                    <!-- <input type="image" src="./images/bulbasaur_icon.png" id="NPCgrass" class="imageNPC" />
-                    <input type="image" src="./images/charmander_icon.png" id="NPCfire" class="imageNPC" />
-                    <input type="image" src="./images/squirtle_icon.png" id="NPCwater" class="imageNPC" /> -->
+                    <!-- NPC Pokemon choices -->
                 </div>
             </div>
-
-            <!-- Pokemon Choices for the Player -->
-
+            <!-- Player Choices -->
             <div id="choices">
+                <!-- Player Pokeballs -->
                 <div class="playerPokeballs">
                     <img src="./images/pokeball.png">
                     <img src="./images/pokeball.png">
@@ -52,29 +59,36 @@
                     <span id="playerScore"></span> 
                 </div>
   
-               <div class="playerPokemon">
+                <!-- Player Pokemon choices -->
+                <div class="playerPokemon">
                     <div class="imagePKMN">
                         <input type="image" src="./images/bulbasaur_back.png" id="grass"/>
-                        Grass
                     </div>
                     <div class="imagePKMN">
                         <input type="image" src="./images/charmander_back.png" id="fire" />
-                        Fire
                     </div>
-                    
                     <div class="imagePKMN">
                         <input type="image" src="./images/squirtle_back.png" id="water"  />
-                        Water
                     </div>
+                </div>
+
+                <!-- Battle Logs Container -->
+                <div id="battleLogsContainer">
+                    <!-- Battle logs will be displayed here -->
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Footer -->
     <footer>
         <h5>
-            <a href="https://www.theodinproject.com" title="The Odin Project Link"><img src="./images/odin-icon.svg"></a>
+            <!-- The Odin Project link -->
+            <a href="https://www.theodinproject.com" title="The Odin Project Link">
+                <img src="./images/odin-icon.svg">
+            </a>
             <br>THE ODIN PROJECT
+            <!-- Github link -->
             <br><a href="https://github.com/hellogaray" title="Github Link">[at]hellogaray</a>
         </h5>
     </footer>
