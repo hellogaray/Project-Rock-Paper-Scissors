@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Project-Rock-Paper-Scissors </h1>
+  <h1>Project Rock-Paper-Scissors </h1>
   <p>The Odin Project - Rock Paper Scissors Project</p>
   <p>
     <img src="https://img.icons8.com/color/48/000000/html-5.png" alt="HTML5 Icon" width="40" height="40"/>
